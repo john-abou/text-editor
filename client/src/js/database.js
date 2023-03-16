@@ -14,19 +14,19 @@ const initdb = async () =>
 
 export const putDb = async (content) => {
   console.log('PUT to the database');
-  const todosDb = await openDB('contacts', 1);
-  const tx = todosDb.transaction('contacts', 'readwrite');
-  const store = tx.objectStore('contacts');
+  const todosDb = await openDB('jate', 1);
+  const tx = todosDb.transaction('jate', 'readwrite');
+  const store = tx.objectStore('jate');
   const request = store.put({  todo: content });
   const result = await request;
   console.log('Updated one: ', result);
 };
 
 export const getDb = async () => {
-  console.log('GET all from contacts');
-  const db = await openDB('contacts', 1);
-  const tx = db.transaction('contacts', 'readonly');
-  const store = tx.objectStore('contacts');
+  console.log('GET all from jate');
+  const db = await openDB('jate', 1);
+  const tx = db.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
   const request = store.getAll();
   const result = await request;
   console.log('data retrieved: ', result);
