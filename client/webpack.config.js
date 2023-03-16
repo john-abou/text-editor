@@ -4,10 +4,6 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-// TODO: Add CSS loaders and babel to webpack.
-
 module.exports = () => {
   return {
     mode: 'development',
@@ -16,27 +12,27 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js', // Output file name
+      path: path.resolve(__dirname, 'dist'), // Output path
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Webpack Plugin',
-        template: './src/index.html',
+        title: 'JATE',  // Title of the page
+        template: './src/index.html', // Template to use
       }),
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin(), //CSS plugin
       new InjectManifest({
-        swSrc: './src/sw.js',
-        swDest: 'sw.js',
+        swSrc: './src/sw.js', // Service worker file
+        swDest: 'sw.js', // Output file
       }),
       new WebpackPwaManifest({
-        name: 'jate',
-        short_name: 'jate',
-        description: 'Text editor that can be installed from the web browser',
+        name: 'jate', // App name
+        short_name: 'jate', // Short name
+        description: 'Text editor that can be installed from the web browser', 
         background_color: '#01579b',
         theme_color: '#7eb4e2',
-        start_url: './',
-        publicPath: './',
+        start_url: './', // Start URL
+        publicPath: './', // Path to assets
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
