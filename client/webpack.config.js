@@ -53,10 +53,6 @@ module.exports = () => {
           use: [MiniCssExtractPlugin.loader, 'css-loader'], // Use plugin
         },
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i, // Image files
-          type: 'asset/resource',
-        },
-        {
           test: /\.m?js$/, // JS files
           exclude: /(node_modules|bower_components)/, // Exclude node modules
           use: { // Use babel-loader to convert ES6+ --> ES5
