@@ -12,7 +12,7 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.js', // Output file name
+      filename: '[name].bundle.js', // Output file name
       path: path.resolve(__dirname, 'dist'), // Output path
     },
     plugins: [
@@ -22,7 +22,7 @@ module.exports = () => {
       }),
       new MiniCssExtractPlugin(), //CSS plugin
       new InjectManifest({
-        swSrc: './src/sw.js', // Service worker file
+        swSrc: './src/src-sw.js', // Service worker file
         swDest: 'sw.js', // Output file
       }),
       new WebpackPwaManifest({
@@ -31,12 +31,13 @@ module.exports = () => {
         description: 'Text editor that can be installed from the web browser', 
         background_color: '#01579b',
         theme_color: '#7eb4e2',
-        start_url: './', // Start URL
-        publicPath: './', // Path to assets
+        start_url: '/', // Start URL
+        publicPath: '/', // Path to assets
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
+            sizes: [96],
+            destination: path.join('assets', 'icons'),
           },
         ],
       }),      
@@ -47,6 +48,10 @@ module.exports = () => {
         {
           test: /\.css$/i, // CSS files
           use: [MiniCssExtractPlugin.loader, 'css-loader'], // Use plugin
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i, // Image files
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/, // JS files

@@ -5,10 +5,8 @@ const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
-// Offline fallback -- precaches images and other assets
 precacheAndRoute(self.__WB_MANIFEST);
 
-// pageCache is a CacheFirst strategy with a 30 day expiration
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
   plugins: [
@@ -27,6 +25,7 @@ warmStrategyCache({
 });
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+
 
 registerRoute(
   ({ request }) => request.destination === 'image',
