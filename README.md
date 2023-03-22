@@ -14,6 +14,10 @@
 ## Description
 This is a text editor that runs in the web browser but can be installed locally and used offline. It uses the webpack to bundle all the js/CSS/HTML files and create an efficient deployed site. (It uses plugins to help bundle the files and convert ES6+ code to ES5 code that is friendly for the browser.) It also uses the idb module to save the text to the indexedDB in the browser. I learned a lot about making efficient sites in this module by using webpack and the various plugins and service worker.
 
+## Links
+- [Deployed Site](https://murmuring-dawn-62613.herokuapp.com/)
+- [Github Repo](https://github.com/john-abou/text-editor)
+
 ## Installation
 My project can be installed from github. After installing it, run "npm install", then run "npm start". After you've created the build and the app is running in your browser, it can be installed.
 
